@@ -24,15 +24,18 @@ export default function HomeScreen() {
         setLocation(loc.coords);
 
         const weatherRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${loc.coords.latitude}&lon=${loc.coords.longitude}&appid=YOUR_API_KEY&units=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${loc.coords.latitude}&lon=${loc.coords.longitude}&appid=83b973fd2dcfd6aa448d9b4bb9a6209c&units=metric`
         );
         const weatherData = await weatherRes.json();
         const { temp } = weatherData.main;
         const description = weatherData.weather[0].description;
         setWeather(`${temp}°C, ${description}`);
+        console.log(weatherData)
+        
       }
     );
   })();
+
 
   return () => subscriber?.remove();
 }, []);
